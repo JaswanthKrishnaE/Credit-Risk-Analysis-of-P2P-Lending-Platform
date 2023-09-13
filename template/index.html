@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Prediction Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 15px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0366d6;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f8f9fa; /* Update background color */
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #0366d6;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            display: block;
+            background-color: #0366d6;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 3px;
+            text-align: center;
+            margin-top: 20px;
+            border: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #005cbf;
+        }
+
+        .bank-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Prediction Form</h1>
+        <form method="post" action="{{ url_for('predict')}}">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="bidsPortfolioManager">Bids Portfolio Manager:</label>
+                    <input type="text" name="bidsPortfolioManager" id="bidsPortfolioManager" class="form-control" required>
+        
+                    <label for="interest">Interest(%):</label>
+                    <input type="text" name="interest" id="interest" class="form-control" required>
+                    
+                    <label for="monthlyPayment">Monthly Payment:</label>
+                    <input type="text" name="monthlyPayment" id="monthlyPayment" class="form-control" required>
+                    
+                    <label for="rating">Rating:</label>
+                    <input type="text" name="rating" id="rating" class="form-control" required>
+                    
+                    <label for="principalPaymentsMade">Principal Payments Made:</label>
+                    <input type="text" name="principalPaymentsMade" id="principalPaymentsMade" class="form-control" required>
+                    
+                    <label for="noOfPreviousLoansBeforeLoan">No. of Previous Loans Before Loan:</label>
+                    <input type="text" name="noOfPreviousLoansBeforeLoan" id="noOfPreviousLoansBeforeLoan" class="form-control" required>
+                    
+                    <label for="principalBalance">Principal Balance:</label>
+                    <input type="text" name="principalBalance" id="principalBalance" class="form-control" required>
+                    
+                    <label for="interestAndPenaltyBalance">Interest & Penalty Balance:</label>
+                    <input type="text" name="interestAndPenaltyBalance" id="interestAndPenaltyBalance" class="form-control" required>
+                    
+                    <label for="amountOfPreviousLoansBeforeLoan">Amount of Previous Loans Before Loan:</label>
+                    <input type="text" name="amountOfPreviousLoansBeforeLoan" id="amountOfPreviousLoansBeforeLoan" class="form-control" required>
+                    
+                    <label for="previousRepaymentsBeforeLoan">Previous Repayments Before Loan:</label>
+                    <input type="text" name="previousRepaymentsBeforeLoan" id="previousRepaymentsBeforeLoan" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="age">Age:</label>
+                    <input type="text" name="age" id="age" class="form-control" required>
+                    
+                    <label for="appliedAmount">Applied Amount:</label>
+                    <input type="text" name="appliedAmount" id="appliedAmount" class="form-control" required>
+                    
+                    <label for="debtToIncome">Debt to Income:</label>
+                    <input type="text" name="debtToIncome" id="debtToIncome" class="form-control" required>
+                    
+                    <label for="loanTenure">Loan Tenure:</label>
+                    <input type="text" name="loanTenure" id="loanTenure" class="form-control" required>
+                    
+                    <label for="interestAmount">Interest Amount:</label>
+                    <input type="text" name="interestAmount" id="interestAmount" class="form-control" required>
+                    
+                    <label for="incomeTotal">Income Total:</label>
+                    <input type="text" name="incomeTotal" id="incomeTotal" class="form-control" required>
+                    
+                    <label for="gender">Gender:</label>
+                    <select name="gender" id="gender" class="form-control" required>
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                        <option value="2" selected>Not Specified</option>
+                    </select>
+                    
+                    <label for="maritalStatus">Marital Status:</label>
+                    <select name="maritalStatus" id="maritalStatus" class="form-control" required>
+                        <option value="1">Married</option>
+                        <option value="2">Cohabitant</option>
+                        <option value="3">Single</option>
+                        <option value="4">Divorced</option>
+                        <option value="5">Widow</option>
+                    </select>
+                    
+                    
+                    <label for="occupationArea">Occupation Area:</label>
+                    <select name="occupationArea" id="occupationArea" class="form-control" required>
+                        <option value="1">Other</option>
+                        <option value="2">Mining</option>
+                        <option value="3">Processing</option>
+                        <option value="4">Energy</option>
+                        <option value="5">Utilities</option>
+                        <option value="6">Construction</option>
+                        <option value="7">Retail and wholesale</option>
+                        <option value="8">Transport and warehousing</option>
+                        <option value="9">Hospitality and catering</option>
+                        <option value="10">Info and telecom</option>
+                        <option value="11">Finance and insurance</option>
+                        <option value="12">Real-estate</option>
+                        <option value="13">Research</option>
+                        <option value="14">Administrative</option>
+                        <option value="15">Civil service & military</option>
+                        <option value="16">Education</option>
+                        <option value="17">Healthcare and social help</option>
+                        <option value="18">Art and entertainment</option>
+                        <option value="19">Agriculture, forestry and fishing</option>
+                    </select>
+
+                    <label for="useOfLoan">Use of Loan:</label>
+                    <select name="useOfLoan" id="useOfLoan" class="form-control" required>
+                      <option value="0">Loan consolidation</option>
+                      <option value="1">Real estate</option>
+                      <option value="2">Home improvement</option>
+                      <option value="3">Business</option>
+                      <option value="4">Education</option>
+                      <option value="5">Travel</option>
+                      <option value="6">Vehicle</option>
+                      <option value="7">Other</option>
+                      <option value="8">Health</option>
+                      <option value="101">Working capital financing</option>
+                      <option value="102">Purchase of machinery equipment</option>
+                      <option value="103">Renovation of real estate</option>
+                      <option value="104">Accounts receivable financing</option>
+                      <option value="105">Acquisition of means of transport</option>
+                      <option value="106">Construction finance</option>
+                      <option value="107">Acquisition of stocks</option>
+                      <option value="108">Acquisition of real estate</option>
+                      <option value="109">Guaranteeing obligation</option>
+                      <option value="110">Other business</option>
+                    </select>
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+        
+
+        <div class="row mt-4">
+            <div class="col text-center">
+                <h4 class="prediction-results">Prediction Results</h4>
+                <table class="table">
+                    <tr>
+                        <th>Eligibility</th>
+                        <th>EMI</th>
+                        <th>ROI</th>
+                        <th>Eligible Loan Amount</th>
+                    </tr>
+                    <tr>
+                        <td>{{eligibility}}</td>
+                        <td>{{emi}}</td>
+                        <td>{{roi}}</td>
+                        <td>{{eligible_loan_amount}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
